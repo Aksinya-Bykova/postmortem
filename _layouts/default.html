@@ -2,10 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ page.title }}</title>
+  <title>{{ page.title }} · ML Notes</title>
 
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 
@@ -21,14 +20,44 @@
     };
   </script>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body>
-  <main>
-    {{ content }}
-  </main>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="{{ '/' | relative_url }}">
+        ML Notes
+      </a>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <nav>
+        <div class="nav-title">Lectures</div>
+
+        <a href="{{ '/tree' | relative_url }}">
+          Decision Trees
+        </a>
+
+        <a href="{{ '/linear-models' | relative_url }}">
+          Linear Models
+        </a>
+
+        <a href="{{ '/probability' | relative_url }}">
+          Probability
+        </a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      {{ content }}
+    </main>
+
+  </div>
+
 </body>
 </html>
