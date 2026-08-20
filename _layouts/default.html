@@ -1,43 +1,75 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
   <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>{{ page.title }} · ML Notes</title>
 
-  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/style.css' | relative_url }}"
+  >
+
+  <!-- MathJax -->
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: {
-        fontCache: 'global'
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ]
       }
     };
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+
 </head>
 
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-title" href="{{ '/' | relative_url }}">
+
+      <a
+        class="site-title"
+        href="{{ '/' | relative_url }}"
+      >
         ML Notes
       </a>
+
     </div>
   </header>
+
 
   <div class="layout">
 
     <aside class="sidebar">
+
       <nav>
-        <div class="nav-title">Lectures</div>
+
+        <div class="nav-title">
+          Lectures
+        </div>
 
         <a href="{{ '/tree' | relative_url }}">
           Decision Trees
@@ -50,14 +82,20 @@
         <a href="{{ '/probability' | relative_url }}">
           Probability
         </a>
+
       </nav>
+
     </aside>
 
+
     <main class="content">
+
       {{ content }}
+
     </main>
 
   </div>
 
 </body>
+
 </html>
