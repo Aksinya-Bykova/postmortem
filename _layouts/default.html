@@ -96,6 +96,53 @@
 
   </div>
 
+
+  <!-- Code copy -->
+  <script>
+    document.querySelectorAll(".highlight").forEach(function (block) {
+
+      const button = document.createElement("button");
+
+      button.className = "code-copy";
+      button.type = "button";
+      button.textContent = "Copy";
+
+      button.addEventListener("click", async function () {
+
+        const code = block.querySelector("code");
+
+        if (!code) return;
+
+        try {
+
+          await navigator.clipboard.writeText(code.innerText);
+
+          button.textContent = "Copied";
+          button.classList.add("copied");
+
+          setTimeout(function () {
+            button.textContent = "Copy";
+            button.classList.remove("copied");
+          }, 1500);
+
+        } catch (error) {
+
+          button.textContent = "Failed";
+
+          setTimeout(function () {
+            button.textContent = "Copy";
+          }, 1500);
+
+        }
+
+      });
+
+      block.appendChild(button);
+
+    });
+  </script>
+
+
 </body>
 
 </html>
