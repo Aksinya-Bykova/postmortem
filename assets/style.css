@@ -56,7 +56,7 @@ body {
   color: var(--text);
   background: var(--bg);
 
-  font-family: "Source Sans 3", sans-serif;
+  font-family: "Inter", sans-serif; /* [ИЗМЕНЕНО] Поменяли шрифт на Inter */
   font-size: 17px;
   line-height: 1.65;
 }
@@ -71,6 +71,11 @@ body {
 
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+
+  /* [ИЗМЕНЕНО] Сделали шапку зафиксированной при прокрутке */
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header-inner {
@@ -121,7 +126,7 @@ body {
   border-right: 1px solid var(--border);
 
   position: sticky;
-  top: 0;
+  top: 56px; /* [ИЗМЕНЕНО] Сайдбар теперь залипает ровно под шапкой (было 0) */
 
   height: calc(100vh - 56px);
 
@@ -171,6 +176,14 @@ body {
   max-width: var(--content-width);
 
   padding: 50px 60px 100px;
+}
+
+/* [ДОБАВЛЕНО] Ограничили ширину текста для идеального и легкого чтения */
+.content p,
+.content ul,
+.content ol,
+.content blockquote {
+  max-width: 720px;
 }
 
 
@@ -253,7 +266,7 @@ ol {
 }
 
 li {
-  margin: 0.25rem 0;
+  margin: 0.45rem 0; /* [ИЗМЕНЕНО] Сделали списки чуть более свободными (было 0.25rem) */
 }
 
 
@@ -282,11 +295,12 @@ code {
   padding: 0.12em 0.3em;
 
   background: var(--code-bg);
+  border: 1px solid var(--border); /* [ИЗМЕНЕНО] Добавили тонкую рамку для четкости */
 
   border-radius: 4px;
 
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.9em;
+  font-size: 0.85em; /* [ИЗМЕНЕНО] Слегка уменьшили размер для гармонии в строке */
 }
 
 
@@ -312,6 +326,7 @@ pre code {
   padding: 0;
 
   background: transparent;
+  border: 0; /* [ДОБАВЛЕНО] Убираем рамку и фон внутри блоков кода */
 }
 
 
