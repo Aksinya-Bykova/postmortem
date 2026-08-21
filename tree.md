@@ -552,4 +552,201 @@ y_pred = tree.predict(X_test)
 ```
 
 
+## Сплит
+
+Представим, что мы уже находимся в некотором узле \(Q\). В нём лежат объекты с одним числовым признаком \(x\) и бинарной целевой переменной \(y\):
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "x": [1, 2, 3, 4, 5, 6, 7, 8],
+    "y": [0, 0, 0, 1, 1, 1, 0, 0]
+})
+
+df
+````
+
+Наша задача — найти **один хороший вопрос**, который разделит эти объекты на два дочерних узла.
+
+Для числового признака естественный вариант вопроса:
+
+$$
+x \le t?
+$$
+
+где (t) — некоторый порог.
+
+Например,
+
+$$
+x \le 3?
+$$
+
+разделит данные на
+
+$$
+L={1,2,3},
+\qquad
+R={4,5,6,7,8}.
+$$
+
+Но почему именно (t=3)? Может быть, лучше (t=4)? Или (t=6)?
+
+**Дерево перебирает возможные пороги и сравнивает получившиеся разбиения.**
+
+### Что сравниваем
+
+Для каждого порога возникают два дочерних узла (L) и (R). Их качество оцениваем той же функцией неоднородности, которую уже определили выше:
+
+$$
+I_{\mathrm{split}}
+==================
+
+\frac{|L|}{|Q|}I(L)
++
+\frac{|R|}{|Q|}I(R).
+$$
+
+То есть для каждого кандидата мы задаём один и тот же вопрос:
+
+> **Насколько неоднородными стали узлы после этого сплита?**
+
+Чем меньше (I_{\mathrm{split}}), тем лучше сплит.
+
+В качестве (I) возьмём индекс Джини:
+
+$$
+I(Q)=1-\sum_k p_k^2.
+$$
+
+Для каждого возможного порога посчитаем размер дочерних узлов, их неоднородность и итоговое значение критерия:
+
+```python
+import numpy as np
+
+def gini(y):
+    proportions = y.value_counts(normalize=True)
+    return 1 - np.sum(proportions ** 2)
+
+
+candidates = []
+
+for t in df["x"].unique()[:-1]:
+    left = df[df["x"] <= t]
+    right = df[df["x"] > t]
+
+    weighted_impurity = (
+        len(left) / len(df) * gini(left["y"])
+        + len(right) / len(df) * gini(right["y"])
+    )
+
+    candidates.append({
+        "threshold": t,
+        "left_size": len(left),
+        "right_size": len(right),
+        "left_gini": gini(left["y"]),
+        "right_gini": gini(right["y"]),
+        "weighted_impurity": weighted_impurity,
+    })
+
+candidates = pd.DataFrame(candidates)
+
+candidates
+```
+
+Получаем таблицу кандидатов:
+
+| threshold | left_size | right_size | left_gini | right_gini | weighted_impurity |
+| --------: | --------: | ---------: | --------: | ---------: | ----------------: |
+|         1 |         1 |          7 |      0.00 |       0.49 |              0.43 |
+|         2 |         2 |          6 |      0.00 |       0.50 |              0.38 |
+|         3 |         3 |          5 |      0.00 |       0.48 |              0.30 |
+|         4 |         4 |          4 |      0.38 |       0.38 |              0.38 |
+|         5 |         5 |          3 |      0.48 |       0.00 |              0.30 |
+|         6 |         6 |          2 |      0.50 |       0.00 |              0.38 |
+|         7 |         7 |          1 |      0.49 |       0.00 |              0.43 |
+
+Для каждого порога мы теперь можем посмотреть, как меняется качество сплита:
+
+```python
+best = candidates.loc[
+    candidates["weighted_impurity"].idxmin()
+]
+
+fig, ax = plt.subplots(figsize=(8, 4.5))
+
+ax.plot(
+    candidates["threshold"],
+    candidates["weighted_impurity"],
+    marker="o",
+    linewidth=2,
+)
+
+ax.scatter(
+    best["threshold"],
+    best["weighted_impurity"],
+    s=80,
+    zorder=3,
+)
+
+ax.annotate(
+    f'best split: x ≤ {int(best["threshold"])}',
+    xy=(
+        best["threshold"],
+        best["weighted_impurity"]
+    ),
+    xytext=(best["threshold"] + 0.4, 0.34),
+    arrowprops=dict(arrowstyle="->"),
+    fontsize=11,
+)
+
+ax.set_xlabel("Threshold $t$")
+ax.set_ylabel("Weighted Gini impurity")
+
+ax.set_xticks(candidates["threshold"])
+
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+
+fig.tight_layout()
+
+fig.savefig(
+    "threshold_vs_impurity.png",
+    dpi=200,
+    bbox_inches="tight"
+)
+
+plt.show()
+```
+
+<figure>
+  <img
+    src="{{ '/assets/threshold_vs_impurity.png' | relative_url }}"
+    alt="Зависимость взвешенной неоднородности от порога разбиения"
+  >
+  <figcaption>
+    Для каждого порога дерево получает своё значение взвешенной неоднородности.
+    Лучший сплит соответствует минимуму этой функции.
+  </figcaption>
+</figure>
+
+Таким образом, лучший порог определяется как
+
+$$
+t^*=\arg\min_t I_{\mathrm{split}}(t).
+$$
+
+Вся процедура выбора сплита в одном узле сводится к простой последовательности:
+
+1. **Перебрать** возможные пороги.
+2. Для каждого порога **разделить** объекты на левый и правый узлы.
+3. **Оценить** качество получившегося разбиения.
+4. **Выбрать** лучший сплит.
+5. Повторить ту же процедуру отдельно для каждого дочернего узла.
+
+Именно поэтому построение дерева является **жадным**: на каждом узле мы выбираем лучший доступный сплит, не перебирая все возможные продолжения дерева.
+
+
+
 
