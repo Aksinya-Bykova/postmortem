@@ -460,3 +460,186 @@ details[open] summary {
   padding-bottom: 0.5rem;
   color: var(--text); /* При открытии меняем цвет заголовка на обычный */
 }
+
+
+/* =========================================================
+   Code blocks
+   ========================================================= */
+
+.highlight {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.highlight pre {
+  margin: 0;
+
+  padding: 1.15rem 1.25rem;
+
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  overflow-x: auto;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88rem;
+  line-height: 1.65;
+
+  tab-size: 4;
+}
+
+/* Don't give inline code styles to code inside a block */
+.highlight code {
+  padding: 0;
+
+  background: transparent;
+  border-radius: 0;
+
+  font-size: inherit;
+}
+
+
+/* =========================================================
+   Copy button
+   ========================================================= */
+
+.code-copy {
+  position: absolute;
+
+  top: 9px;
+  right: 9px;
+
+  padding: 5px 9px;
+
+  color: var(--text-muted);
+  background: transparent;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transition:
+    opacity 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.highlight:hover .code-copy,
+.code-copy:focus {
+  opacity: 1;
+}
+
+.code-copy:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.code-copy.copied {
+  color: var(--text);
+  background: var(--surface);
+}
+
+
+/* =========================================================
+   Rouge — Python syntax highlighting
+   ========================================================= */
+
+/* Comments */
+.highlight .c,
+.highlight .ch,
+.highlight .cm,
+.highlight .cp,
+.highlight .cpf,
+.highlight .c1,
+.highlight .cs {
+  color: var(--text-muted);
+}
+
+/* Keywords */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+  font-weight: 600;
+}
+
+/* Strings */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1 {
+  color: #8b5cf6;
+}
+
+/* Numbers */
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo {
+  color: #0891b2;
+}
+
+/* Function / class names */
+.highlight .nf,
+.highlight .nc {
+  font-weight: 600;
+}
+
+/* Operators */
+.highlight .o,
+.highlight .ow {
+  color: var(--text);
+}
+
+
+/* =========================================================
+   Dark mode adjustments
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .highlight .s,
+  .highlight .sa,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .dl,
+  .highlight .sd,
+  .highlight .s2,
+  .highlight .se,
+  .highlight .sh,
+  .highlight .si,
+  .highlight .sx,
+  .highlight .sr,
+  .highlight .s1 {
+    color: #c4b5fd;
+  }
+
+  .highlight .m,
+  .highlight .mb,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .mo {
+    color: #67e8f9;
+  }
+}
