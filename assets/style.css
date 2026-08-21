@@ -425,3 +425,38 @@ mjx-container[display="true"] + p {
   }
 
 }
+
+
+/* =========================================================
+   Collapsible blocks (details)
+   ========================================================= */
+
+details {
+  margin: 1.5rem 0;
+  padding: 0.8rem 1.2rem;
+  
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  
+  max-width: 720px; /* Чтобы ширина совпадала с остальным текстом */
+}
+
+summary {
+  font-weight: 600;
+  color: var(--link); /* Делаем текст кликабельным (цветом ссылки) */
+  cursor: pointer;
+  user-select: none;
+}
+
+summary:hover {
+  color: var(--link-hover);
+}
+
+/* Добавляем отступ для текста внутри, когда блок открыт */
+details[open] summary {
+  margin-bottom: 0.8rem;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 0.5rem;
+  color: var(--text); /* При открытии меняем цвет заголовка на обычный */
+}
