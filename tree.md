@@ -946,7 +946,7 @@ $$
 $$
 \boxed{
 \text{Bias}
-;\longleftrightarrow;
+\longleftrightarrow
 \text{средний прогноз систематически ошибается}
 }
 $$
@@ -975,7 +975,7 @@ $$
 $$
 \boxed{
 \text{Variance}
-;\longleftrightarrow;
+\longleftrightarrow
 \text{прогноз сильно меняется от train к train}
 }
 $$
