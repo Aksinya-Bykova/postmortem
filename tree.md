@@ -349,7 +349,7 @@ $$
 ### Optional: Энтропия
 <figure>
   <img
-    src="{{ '/assets/claude_shannon.jpg' | relative_url }}"
+    src="{{ '/assets/ClaudeShannon_MFO3807.jpg' | relative_url }}"
     alt="Claude Shannon"
   >
   <figcaption>
