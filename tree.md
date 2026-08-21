@@ -344,7 +344,22 @@ $$
 
 Если в качестве меры $I$ используется энтропия, уменьшение энтропии называют **Information Gain**. Для индекса Джини говорят об уменьшении индекса Джини или **Gini impurity decrease**.
 
+Всё сказанное ранее про треугольники — это просто педагогический приём, чтобы вам было проще уловить суть. В оригинале дерево — более сложная искусственная конструкция.
+
 ### Optional: Энтропия
+<figure>
+  <img
+    src="{{ '/assets/claude_shannon.jpg' | relative_url }}"
+    alt="Claude Shannon"
+  >
+  <figcaption>
+    Claude Shannon, 2015. Photo by Konrad Jacobs,
+    licensed under
+    <a href="https://creativecommons.org/licenses/by-sa/2.0/de/">
+      CC BY-SA 2.0 DE
+    </a>.
+  </figcaption>
+</figure>
 
 В 1948 году Клод Шеннон опубликовал работу *A Mathematical Theory of Communication*, заложившую основы современной теории информации. В ней энтропия появилась как мера неопределённости случайной величины:
 
