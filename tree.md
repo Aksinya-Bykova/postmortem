@@ -2212,7 +2212,7 @@ $$
 \left(
 \mathbb E_D[\hat f_D(x)]-f(x)
 \right)^2
-}*{\mathrm{Bias}^2}
+}_{\mathrm{Bias}^2}
 +
 \underbrace{
 \mathbb E_D
@@ -2221,7 +2221,7 @@ $$
 \hat f_D(x)-\mathbb E_D[\hat f_D(x)]
 \right)^2
 \right]
-}*{\mathrm{Variance}}
+}_{\mathrm{Variance}}
 }
 $$
 
