@@ -2713,9 +2713,9 @@ $$
 =
 
 \frac{
-\sum\limits_{j<i,;x_j=c} y_j
+\sum\limits_{j<i,\;x_j=c} y_j
 }{
-{j<i:x_j=c}
+|\{j<i : x_j=c\}|
 }.
 $$
 
