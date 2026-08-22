@@ -1624,6 +1624,29 @@ $$
 
 Таким образом, для MSE обучение дерева на остатках совпадает с приближением отрицательного градиента с точностью до постоянного множителя.
 
+<details markdown="1">
+  <summary>Какие ещё бывают функции потерь?</summary>
+
+MSE — далеко не единственный вариант. В `sklearn` для gradient boosting доступны разные функции потерь в зависимости от задачи.
+
+Для `GradientBoostingRegressor`:
+
+* `squared_error` — квадратичная ошибка (MSE);
+* `absolute_error` — абсолютная ошибка (MAE);
+* `huber` — комбинация квадратичной и абсолютной ошибки;
+* `quantile` — quantile loss для квантильной регрессии.
+
+Для `GradientBoostingClassifier`:
+
+* `log_loss` — логистическая ошибка (cross-entropy);
+* `exponential` — экспоненциальная ошибка, при которой gradient boosting восстанавливает AdaBoost.
+
+В более новом `HistGradientBoostingRegressor` также доступны `gamma` и `poisson`.
+
+Для каждой функции потерь новое дерево обучается приближать соответствующий **отрицательный градиент**.
+
+</details>
+
 ## Общий алгоритм
 
 Для $m=1,\ldots,M$:
@@ -1639,7 +1662,6 @@ $$
    g_i^{(m)}
    
    =
-
    -\frac{\partial L(y_i,F(x_i))}
    {\partial F(x_i)}
    \bigg|*{F=F*{m-1}}
