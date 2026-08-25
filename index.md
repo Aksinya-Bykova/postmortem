@@ -1,12 +1,10 @@
 ---
 layout: default
-title: ML Lectures
 ---
 
-# ML Lectures
-
-Конспекты по машинному обучению.
+# Postmortem
 
 ## Содержание
 
-1. [Decision Trees](tree)
+1. [Model Evaluation](evaluation)
+2. [Decision Trees](tree)
