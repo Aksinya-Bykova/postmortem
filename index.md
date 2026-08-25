@@ -6,5 +6,5 @@ layout: default
 
 ## Содержание
 
-1. [Model Evaluation](evaluation)
+1. [Model Evaluation](model-evaluation)
 2. [Decision Trees](tree)
