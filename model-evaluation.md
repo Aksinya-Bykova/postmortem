@@ -193,9 +193,9 @@ Choosing the minimum experiment that can distinguish hypotheses
 
 Resource / compute budget
 
-# Changing Anything Changes Everything (NeurIPS, 2015)
-
 # LLM as a judge (OpenAI)
+
+# Changing Anything Changes Everything (NeurIPS, 2015)
 
 # 6 Lessons Learned at Booking.com
 
