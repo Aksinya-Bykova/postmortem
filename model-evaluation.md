@@ -92,22 +92,73 @@ $$ P(Y_{test} \mid X_{test}, X_{train}, Y_{train}) \neq P(Y_{test} \mid X_{test}
 
 # Multiple comparisons
 
+
+Пусть мы одновременно проверяем m нулевых гипотез:
+
+$$
+H_1,\ldots,H_m.
+$$
+
+Для каждой гипотезы используем уровень значимости \(\alpha\):
+
+$$
+P(\text{reject }H_i\mid H_i\text{ true})\leq\alpha.
+$$
+
+Если проверяется **одна** гипотеза, это контролирует вероятность ошибки I рода.
+
+Но при множественном тестировании нас интересует вероятность сделать **хотя бы одну** ошибку I рода среди всех \(m\) проверок:
+
+$$
+\mathrm{FWER}
+=
+P\left(
+\bigcup_{i=1}^{m}
+\{\text{reject }H_i\mid H_i\text{ true}\}
+\right).
+$$
+
+Это называется **family-wise error rate (FWER)**.
+
+Если все \(m\) нулевых гипотез истинны и тесты независимы, то
+
+$$
+\mathrm{FWER}
+=
+1-(1-\alpha)^m.
+$$
+
+Например, при
+
+$$
+\alpha=0.05,\qquad m=20
+$$
+
+получаем
+
+$$
+\mathrm{FWER}
+=
+1-0.95^{20}
+\approx 0.642.
+$$
+
+То есть даже если **все 20 гипотез ложны в смысле эффекта отсутствия**, вероятность получить хотя бы один `p < 0.05` составляет около **64%**.
+
 # Experimental design under constraints
 
-# How to know whether an experiment is feasible before running it
+How to know whether an experiment is feasible before running it
 
-# Pilot experiments
+Pilot experiments
 
-# Choosing the minimum experiment that can distinguish hypotheses
+Choosing the minimum experiment that can distinguish hypotheses
 
-# Resource / compute budget
+Resource / compute budget
 
 # Changing Anything Changes Everything
-
-# On Over-ﬁtting in Model Selection and Subsequent Selection Bias in Performance Evaluation
 
 # LLM as a judge
 
 # 6 Lessons Learned at Booking.com
 
-# Demystifying evals for AI agents
+# Demystifying evals for AI agents (Anthropic)
