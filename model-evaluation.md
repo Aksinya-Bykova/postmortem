@@ -22,6 +22,43 @@ title: Model Evaluation
 # Настройки
 ## Логирование
 
+## Yandex DataSphere
+
+Это смерть и ужас в плане логирования и просмотра графиков, потому что браузер плохо тянет обновление данных (по крайней мере у меня). Я не придумала ничего лучше: я логирую в директорию, а потом скачиваю zip-архив с ней и смотрю графики локально через TensorBoard в VS Code.
+
+Датасфера не даёт просто так скачивать файлы через кнопочку, вместо этого она предлагает скачать html. Кроме того, там нет обычного терминала (по крайней мере я не нашла), поэтому вместо него приходится использовать ноутбук.
+
+```
+!zip -r logs.zip tensorboard_logs
+```
+
+```
+from IPython.display import FileLink
+FileLink('logs.zip')
+```
+
+```
+import base64
+from IPython.display import HTML
+
+def create_download_link(filename):
+    with open(filename, 'rb') as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode()
+    payload = f'data:application/zip;base64,{b64}'
+    html = f'''
+    <a href="{payload}" download="{filename}" 
+       style="padding: 10px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+       СКАЧАТЬ АРХИВ LOGS.ZIP
+    </a>
+    '''
+    return HTML(html)
+
+create_download_link('logs.zip')
+```
+
+Но оно того стоит, там классные GPU.
+
 # Rules of Machine Learning
 
 # Leakage
