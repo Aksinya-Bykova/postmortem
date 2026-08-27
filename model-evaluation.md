@@ -119,8 +119,6 @@ $$
 
 Остановимся только на нашем примере.
 
-### Rolling Mean/Var
-
 ### KS-тест
 <details markdown="1">
   <summary>Описание</summary>
