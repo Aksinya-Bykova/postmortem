@@ -159,8 +159,6 @@ $$
 \operatorname{Var}(X_t)=\sigma^2,
 $$
 
-и
-
 $$
 \operatorname{Cov}(X_t,X_{t+k})
 
