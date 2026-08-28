@@ -562,7 +562,7 @@ $$
 
 на большом диапазоне лагов.
 
-Это warning: значительная часть истории может состоять из сильно зависимых наблюдений, и эффективный размер выборки существенно меньше формального \(N\).
+Это warning: значительная часть истории может состоять из сильно зависимых наблюдений, и эффективный размер выборки существенно меньше формального $N$.
 
 Таким образом, ACF отвечает на вопрос:
 
@@ -781,13 +781,49 @@ $$
 </details>
 
 # Variance and randomness
+Часто можно столкнуться с тем, что результат скачет в зависимости от настроек (выбора seed, например). Возникает вопрос: а вообще насколько можно доверять метрике с определённой дисперсией? Грубо говоря, почему наш метод — это не казино?
+
+Пример. В одной известной школе по ML было отборочное задание:
+
+> Нужно сделать бинарный классификатор над текстовыми ответами LLM
+>
+> Дан датасет на 689 примеров. Среди них около 70% положительные.
+>
+> Языковая модель имеет 24 слоя по 896 размерности.
+>
+> Разбиение можно делать любое. Авторы предлагают делать K-fold и в таком случае они будут судить по среднему результату 
+>
+> Жюри судит по accuracy
+
+Что здесь не так? После того, как я поперебирала разные архитектуры и сиды, я заметила, что результаты очень сильно скачут. Я в конце сделала честные стат тесты и получила доверительный интервал что-то типа от 0.65 до 0.78. При этом классификатор, который всегда даёт True, получает 0.7. У меня потерялась мотивация заниматься этим дольше одного вечера, потому что с таким дизайном эксперимента это превращается буквально в казино. Можно, конечно, написать сложную архитектуру, с умным видом написать обоснование, подкрутить seed и надеяться, что на скрытом тесте получится высокий скор, но это вызывает фрустрацию.
+
+
 
 # Statistical significance
 
 # Effect size / practical significance
 
+# Experimental design under constraints
+
+How to know whether an experiment is feasible before running it
+
+Pilot experiments
+
+Choosing the minimum experiment that can distinguish hypotheses
+
+Resource / compute budget
+
+# LLM as a judge (OpenAI)
+
+# Changing Anything Changes Everything (NeurIPS, 2015)
+
+# 6 Lessons Learned at Booking.com
+
+# Demystifying evals for AI agents (Anthropic)
+
 # Multiple comparisons
 
+> я хз реально нужно ли, вот набросок
 
 Пусть мы одновременно проверяем m нулевых гипотез:
 
@@ -807,6 +843,7 @@ $$
 
 $$
 \mathrm{FWER}
+
 =
 P\left(
 \bigcup_{i=1}^{m}
@@ -820,6 +857,7 @@ $$
 
 $$
 \mathrm{FWER}
+
 =
 1-(1-\alpha)^m.
 $$
@@ -834,27 +872,10 @@ $$
 
 $$
 \mathrm{FWER}
+
 =
 1-0.95^{20}
 \approx 0.642.
 $$
 
 То есть даже если **все 20 гипотез ложны в смысле эффекта отсутствия**, вероятность получить хотя бы один `p < 0.05` составляет около **64%**.
-
-# Experimental design under constraints
-
-How to know whether an experiment is feasible before running it
-
-Pilot experiments
-
-Choosing the minimum experiment that can distinguish hypotheses
-
-Resource / compute budget
-
-# LLM as a judge (OpenAI)
-
-# Changing Anything Changes Everything (NeurIPS, 2015)
-
-# 6 Lessons Learned at Booking.com
-
-# Demystifying evals for AI agents (Anthropic)
