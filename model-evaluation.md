@@ -875,6 +875,12 @@ $$ X w = y $$
 Как можно заметить, это исследование было обречено с самого начала. Поэтому надо заранее думать над дизайном исследования, не совершать ошибки вроде тех, что описаны выше, будет очень обидно потратить GPU и свои силы
 
 
+https://proceedings.mlsys.org/paper_files/paper/2021/file/0184b0cd3cfb185989f858a1d9f5c1eb-Paper.pdf
+https://arxiv.org/html/2606.20536
+https://blog.ml.cmu.edu/2020/08/31/5-reproducibility/
+https://www.ibm.com/think/topics/uncertainty-quantification
+
+
 # Effect size / practical significance
 p-value само по себе не сообщает размер эффекта. Даже если эффект существует статистически, достаточно ли он велик, чтобы нам было не всё равно? Как до эксперимента понять, какой эффект мы вообще способны обнаружить?
 
