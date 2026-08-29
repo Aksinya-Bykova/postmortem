@@ -32,8 +32,7 @@ title: Model Evaluation
 >
 > где $S_{\text{train}}$ — случайный обучающий датасет, $\xi$ — случайный сид
 
-# Train / validation / test
-Если несколько моделей тренировать на одном и том же разбиении с идеей выбора одной по размеру метрики, это будет баесд под valid
+
 
 # Настройки
 ## Логирование
@@ -121,6 +120,9 @@ create_download_link('logs.zip')
 ```
 
 Но оно того стоит, там классные GPU.
+
+# Train / validation / test
+Если несколько моделей тренировать на одном и том же разбиении с идеей выбора одной по размеру метрики, это будет баесд под valid
 
 # Rules of Machine Learning
 https://developers.google.com/machine-learning/guides/rules-of-ml
