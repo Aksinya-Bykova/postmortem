@@ -121,13 +121,13 @@ create_download_link('logs.zip')
 
 Но оно того стоит, там классные GPU.
 
-# Train / validation / test
-Если несколько моделей тренировать на одном и том же разбиении с идеей выбора одной по размеру метрики, это будет баесд под valid
-
 # Rules of Machine Learning
 https://developers.google.com/machine-learning/guides/rules-of-ml
 
 в частности A/B tests
+
+# Train / validation / test
+Если несколько моделей тренировать на одном и том же разбиении с идеей выбора одной по размеру метрики, это будет баесд под valid
 
 # Leakage
 Есть неочевидные способы устроить утечку: feature selection, PCA, target encoding, scaling — по всей выборке
