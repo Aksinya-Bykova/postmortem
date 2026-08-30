@@ -251,19 +251,24 @@ $$ \text{ROC-AUC} = \frac{1}{N_+ N_-} \sum_{i: y_i=1} \sum_{j: y_j=0} \mathbb{I}
 
 ### 2. Метрики регрессии ($y_i \in \mathbb{R}$)
 
-#### MSE (Mean Squared Error — Среднеквадратичная ошибка)
+**MSE (Mean Squared Error — Среднеквадратичная ошибка)**
+
 $$ \text{MSE} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2 $$
 
-#### RMSE (Root Mean Squared Error — Корень из MSE)
+**RMSE (Root Mean Squared Error — Корень из MSE)**
+
 $$ \text{RMSE} = \sqrt{\text{MSE}} = \sqrt{\frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2} $$
 
-#### MAE (Mean Absolute Error — Средняя абсолютная ошибка)
+**MAE (Mean Absolute Error — Средняя абсолютная ошибка)**
+
 $$ \text{MAE} = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i| $$
 
-#### MAPE (Mean Absolute Percentage Error — Относительная ошибка в процентах)
+**MAPE (Mean Absolute Percentage Error — Относительная ошибка в процентах)**
+
 $$ \text{MAPE} = \frac{100\%}{N} \sum_{i=1}^N \left| \frac{y_i - \hat{y}_i}{y_i} \right| $$
 
-#### Коэффициент детерминации ($R^2$)
+**Коэффициент детерминации ($R^2$)**
+
 Доля дисперсии зависимой переменной, объясненная моделью:
 $$ R^2 = 1 - \frac{\sum_{i=1}^N (y_i - \hat{y}_i)^2}{\sum_{i=1}^N (y_i - \bar{y})^2} $$
 где $\bar{y} = \frac{1}{N}\sum_{i=1}^N y_i$ — выборочное среднее истинных значений.
@@ -284,7 +289,8 @@ https://developers.google.com/machine-learning/guides/rules-of-ml
 # Statistical significance
 Часто можно столкнуться с тем, что результат скачет в зависимости от настроек (выбора seed, например). Возникает вопрос: а вообще насколько можно доверять метрике с определённой дисперсией? Грубо говоря, почему наш метод — это не казино?
 
-## Случай из практики 
+## Случай из практики: как делать не надо
+
 В одной известной школе по ML было отборочное задание:
 
 > Нужно сделать бинарный классификатор над текстовыми ответами LLM
