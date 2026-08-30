@@ -42,9 +42,20 @@ title: Model Evaluation
 
 Я думаю, именно так и нужно воспринимать измерения, потому что когда мы решаем задачу машинного обучения, мы неявно предполагаем, что модель может столкнуться с любой ситуацией, какая только может произойти во вселенной, но в нашем распоряжении есть только датасет
 
-Через эту призму можно заметить следующее. Если мы возьмем матожидание от качества модели по всем возможным обучающим выборкам $S_{\text{train}}$, мы получим **ожидаемое качество самого алгоритма**:
+> Через эту призму можно заметить следующее. Если мы возьмем матожидание от качества модели по всем возможным обучающим выборкам $S_{\text{train}}$, мы получим **ожидаемое качество самого алгоритма**:
+>
+> $$ \mathbb{E}_{S_{\text{train}}} \Big[ \underbrace{\mathbb{E}_{(X, Y)} \big[ \ell(\hat{f}(X), Y) \mid S_{\text{train}} \big]}_{\text{качество конкретной модели}} \Big] = \mathbb{E}\big[ \ell(\hat{f}(X), Y) \big] $$
+>
 
-$$ \mathbb{E}_{S_{\text{train}}} \Big[ \underbrace{\mathbb{E}_{(X, Y)} \big[ \ell(\hat{f}(X), Y) \mid S_{\text{train}} \big]}_{\text{качество конкретной модели}} \Big] = \mathbb{E}\big[ \ell(\hat{f}(X), Y) \big] $$
+Тогда дисперсия метрики — это на самом деле вот что такое:
+
+> Воспользуемся формулой полной дисперсии:
+>
+> $$ \operatorname{Var}(Z) = \mathbb{E}\big[\operatorname{Var}(Z \mid W)\big] + \operatorname{Var}\big(\mathbb{E}[Z \mid W]\big) $$
+>
+> Если применить её к ошибке модели:
+>
+> $$ \operatorname{Var}(\text{Метрики}) = \underbrace{\mathbb{E}_{S_{\text{train}}}\big[\operatorname{Var}_{\text{test}}(\text{Ошибка} \mid S_{\text{train}})\big]}_{\operatorname{Var}_{\text{data}}\text{ (дисперсия теста)}} + \underbrace{\operatorname{Var}_{S_{\text{train}}}\big(\mathbb{E}_{\text{test}}[\text{Ошибка} \mid S_{\text{train}}]\big)}_{\operatorname{Var}_{\text{train}}\text{ (дисперсия обучения / сидов)}} $$
 
 # Настройки
 ## Логирование
