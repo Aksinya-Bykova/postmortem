@@ -55,9 +55,13 @@ title: Model Evaluation
 >
 > Если применить её к ошибке модели:
 >
-> $$ \operatorname{Var}(\text{Метрики}) = \underbrace{\mathbb{E}_{S_{\text{train}}}\big[\operatorname{Var}_{\text{test}}(\text{Ошибка} \mid S_{\text{train}})\big]}_{\operatorname{Var}_{\text{data}}\text{ (дисперсия теста)}} + \underbrace{\operatorname{Var}_{S_{\text{train}}}\big(\mathbb{E}_{\text{test}}[\text{Ошибка} \mid S_{\text{train}}]\big)}_{\operatorname{Var}_{\text{train}}\text{ (дисперсия обучения / сидов)}} $$
+> $$ \operatorname{Var}(\text{Метрики}) =
+>
+> \underbrace{\mathbb{E}_{S_{\text{train}}}\big[\operatorname{Var}_{\text{test}}(\text{Ошибка} \mid S_{\text{train}})\big]}_{\operatorname{Var}_{\text{data}}\text{ (дисперсия теста)}} + \underbrace{\operatorname{Var}_{S_{\text{train}}}\big(\mathbb{E}_{\text{test}}[\text{Ошибка} \mid S_{\text{train}}]\big)}_{\operatorname{Var}_{\text{train}}\text{ (дисперсия обучения / сидов)}} $$
+>
+> (Ошибка и значение Loss — это одно и то же) 
 
-Если пока не очень понятно, не переживайте. Мне захотелось ввести именно такое определение, потому что классическое понимание метрики как числа, характеризующего качество, недостаточно полное. Лучше сразу сказать, что метрика — это именно величина, потому что это не создаёт иллюзию точности.
+Если пока не очень понятно, не переживайте. Мне захотелось ввести именно такое определение, потому что классическое понимание метрики как числа, характеризующего качество, недостаточно полное. Лучше сразу сказать, что метрика — это именно величина, а уже значение метрики — число, потому что это не создаёт иллюзию точности.
 
 # Настройки
 ## Логирование
