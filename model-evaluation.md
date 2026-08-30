@@ -170,7 +170,65 @@ create_download_link('logs.zip')
 
 # Применение метрик
 
-Всякое про дисбаланс, что за ставить в early stopping
+## Базовые метрики качества
+
+Пусть $N$ — число объектов в тестовой выборке, $y_i$ — истинное значение, $\hat{y}_i$ — предсказанное значение (метка класса или число), $\hat{p}_i \in [0, 1]$ — предсказанная моделью вероятность положительного класса.
+
+---
+
+### 1. Метрики классификации
+
+Для бинарной классификации ($y_i \in \{0, 1\}$) базовые счетчики матрицы ошибок (Confusion Matrix):
+* $TP$ (True Positive) — верно предсказанные положительные;
+* $TN$ (True Negative) — верно предсказанные отрицательные;
+* $FP$ (False Positive) — ложные срабатывания (ошибка I рода);
+* $FN$ (False Negative) — пропуски цели (ошибка II рода).
+
+#### Accuracy (Доля правильных ответов)
+$$ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{1}{N} \sum_{i=1}^N \mathbb{I}(\hat{y}_i = y_i) $$
+
+#### Precision (Точность / Прогностическая ценность)
+Доля реальных положительных объектов среди всех, которые модель пометила положительными:
+$$ \text{Precision} = \frac{TP}{TP + FP} $$
+
+#### Recall (Полнота / Чувствительность / True Positive Rate)
+Доля найденных моделью положительных объектов среди всех реальных положительных:
+$$ \text{Recall} = \frac{TP}{TP + FN} $$
+
+#### $F_1$-Score (Гармоническое среднее точности и полноты)
+$$ F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} = \frac{2TP}{2TP + FP + FN} $$
+
+#### LogLoss / Binary Cross-Entropy (Логистическая функция потерь)
+Оценивает качество вероятностных предсказаний $\hat{p}_i$:
+$$ \text{LogLoss} = -\frac{1}{N} \sum_{i=1}^N \Big( y_i \ln(\hat{p}_i) + (1 - y_i) \ln(1 - \hat{p}_i) \Big) $$
+
+#### ROC-AUC (Площадь под ROC-кривой)
+Вероятность того, что случайно выбранному положительному объекту модель присвоит больший вероятностный скор, чем случайно выбранному отрицательному:
+$$ \text{ROC-AUC} = \frac{1}{N_+ N_-} \sum_{i: y_i=1} \sum_{j: y_j=0} \mathbb{I}(\hat{p}_i > \hat{p}_j) $$
+где $N_+$ и $N_-$ — количество положительных и отрицательных объектов в выборке.
+
+---
+
+### 2. Метрики регрессии ($y_i \in \mathbb{R}$)
+
+#### MSE (Mean Squared Error — Среднеквадратичная ошибка)
+$$ \text{MSE} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2 $$
+
+#### RMSE (Root Mean Squared Error — Корень из MSE)
+$$ \text{RMSE} = \sqrt{\text{MSE}} = \sqrt{\frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2} $$
+
+#### MAE (Mean Absolute Error — Средняя абсолютная ошибка)
+$$ \text{MAE} = \frac{1}{N} \sum_{i=1}^N |y_i - \hat{y}_i| $$
+
+#### MAPE (Mean Absolute Percentage Error — Относительная ошибка в процентах)
+$$ \text{MAPE} = \frac{100\%}{N} \sum_{i=1}^N \left| \frac{y_i - \hat{y}_i}{y_i} \right| $$
+
+#### Коэффициент детерминации ($R^2$)
+Доля дисперсии зависимой переменной, объясненная моделью:
+$$ R^2 = 1 - \frac{\sum_{i=1}^N (y_i - \hat{y}_i)^2}{\sum_{i=1}^N (y_i - \bar{y})^2} $$
+где $\bar{y} = \frac{1}{N}\sum_{i=1}^N y_i$ — выборочное среднее истинных значений.
+
+TODO Всякое про дисбаланс, что ставить в early stopping
 
 # Rules of Machine Learning
 https://developers.google.com/machine-learning/guides/rules-of-ml
