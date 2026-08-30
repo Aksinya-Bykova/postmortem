@@ -168,6 +168,10 @@ create_download_link('logs.zip')
 
 Но оно того стоит, там классные GPU.
 
+# Применение метрик
+
+Всякое про дисбаланс, что за ставить в early stopping
+
 # Rules of Machine Learning
 https://developers.google.com/machine-learning/guides/rules-of-ml
 
