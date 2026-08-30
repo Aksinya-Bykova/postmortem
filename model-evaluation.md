@@ -522,6 +522,8 @@ Resource / compute budget
 
 # Demystifying evals for AI agents (Anthropic)
 
+https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents 
+
 # Multiple comparisons
 
 > я хз реально нужно ли, вот набросок
