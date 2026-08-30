@@ -294,6 +294,8 @@ $$ R^2 = 1 - \frac{\sum_{i=1}^N (y_i - \hat{y}_i)^2}{\sum_{i=1}^N (y_i - \bar{y}
 
 Ладно, а что тогда? После возражения преподавателя "так классов же поровну" можно подумать, что раз судят по accuracy, то и stopping надо делать по accuracy, но это не так. Грамотнее делать по Cross-Entropy.
 
+
+
 # Rules of Machine Learning
 https://developers.google.com/machine-learning/guides/rules-of-ml
 
