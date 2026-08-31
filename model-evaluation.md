@@ -759,7 +759,7 @@ Resource / compute budget
 </details>
 
 
-## Статьи на разбор
+# Статьи на разбор
 Есть статьи, которые нельзя отнести к какой-то одной теме
 
 6 Lessons Learned at Booking.com
