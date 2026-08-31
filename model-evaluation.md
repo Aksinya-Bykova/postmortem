@@ -722,6 +722,8 @@ Resource / compute budget
 
 # Changing Anything Changes Everything (NeurIPS, 2015)
 
+[**Hidden Technical Debt in Machine Learning Systems**](https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf?utm_source=chatgpt.com)
+
 # LLM as a judge (OpenAI)
 
 # Оценка агентов
