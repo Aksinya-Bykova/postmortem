@@ -306,9 +306,13 @@ $$ R^2 = 1 - \frac{\sum_{i=1}^N (y_i - \hat{y}_i)^2}{\sum_{i=1}^N (y_i - \bar{y}
 https://developers.google.com/machine-learning/guides/rules-of-ml
 
 # Train / validation / test
-Если несколько моделей тренировать на одном и том же разбиении с идеей выбора одной по размеру метрики, это будет баесд под valid
+## Validation bias
 
-K-folds не снижает дисперсию
+## K-folds
+### Статьи на разбор
+[**On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation**](https://dl.acm.org/doi/epdf/10.5555/1756006.1859921)
+
+Почему обычная K-fold кросс-валидация обманывает нас при подборе гиперпараметров, и почему без вложенной валидации (Nested CV) итоговая оценка качества всегда завышена (оптимистична)
 
 # Leakage
 Есть неочевидные способы устроить утечку: feature selection, PCA, target encoding, scaling — по всей выборке
