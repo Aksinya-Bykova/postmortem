@@ -72,10 +72,6 @@ title: Model Evaluation
 
 TODO: это набросок по статье Йошуа Бенджио. Надо поаккуратнее и попроще написать то же самое
 
-Ещё какая-то книжка есть
-
-https://hastie.su.domains/ElemStatLearn/
-
 ---
 
 Пусть объекты реального мира представляют собой пары «признаки-ответ» $Z = (X, Y)$, распределенные согласно некоторому неизвестному вероятностному распределению $P$ на пространстве $\mathcal{Z} = \mathcal{X} \times \mathcal{Y}$.
@@ -685,6 +681,10 @@ p-value само по себе не сообщает размер эффекта
 **Thomas G. Dietterich (1998) — «Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms»**
    * *Почему важна:* Классическая работа, впервые доказавшая, что обычный t-тест на K-fold CV дает высокий Type I Error (находит разницу там, где её нет), и предложившая **5x2cv t-test** и **McNemar's test** как безопасные альтернативы.
 
+[**Inference for the Generalization Error**](https://www.iro.umontreal.ca/~lisa/pointeurs/nadeau_MLJ1597.pdf)
+
+Статья Йошуа Бенджио (значит читать надо)
+
 # A/B tests
 ## Статьи на разбор
 **«Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing»**
@@ -768,4 +768,8 @@ Resource / compute budget
 # Статьи на разбор
 Есть статьи, которые нельзя отнести к какой-то одной теме
 
-6 Lessons Learned at Booking.com
+[**6 Lessons Learned at Booking.com**](https://dl.acm.org/doi/epdf/10.1145/3292500.3330744)
+
+[**The Elements of Statistical Learning**](https://hastie.su.domains/ElemStatLearn/)
+
+Выглядит как очень крутая книга, которую точно-точно надо читать
