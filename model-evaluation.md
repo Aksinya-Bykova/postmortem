@@ -766,10 +766,12 @@ Resource / compute budget
 
 
 # Статьи на разбор
-Есть статьи, которые нельзя отнести к какой-то одной теме
-
-[**6 Lessons Learned at Booking.com**](https://dl.acm.org/doi/epdf/10.1145/3292500.3330744)
-
 [**The Elements of Statistical Learning**](https://hastie.su.domains/ElemStatLearn/)
 
 Выглядит как очень крутая книга, которую точно-точно надо читать
+
+[**6 Lessons Learned at Booking.com**](https://dl.acm.org/doi/epdf/10.1145/3292500.3330744)
+
+[**Predicting Good Probabilities with Supervised Learning**](https://dl.acm.org/doi/epdf/10.1145/1102351.1102430)
+
+Почему большинство ML-моделей врут, когда выдают числа от 0 до 1 под видом «вероятностей», и как это чинить (Platt Scaling vs Isotonic Regression)
