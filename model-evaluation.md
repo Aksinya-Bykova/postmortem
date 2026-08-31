@@ -716,11 +716,9 @@ Choosing the minimum experiment that can distinguish hypotheses
 
 Resource / compute budget
 
-# LLM as a judge (OpenAI)
-
 # Changing Anything Changes Everything (NeurIPS, 2015)
 
-# 6 Lessons Learned at Booking.com
+# LLM as a judge (OpenAI)
 
 # Оценка агентов
 ## Статьи на разбор
@@ -759,3 +757,9 @@ Resource / compute budget
 <details markdown="1">
   <summary>Описание</summary>
 </details>
+
+
+## Статьи на разбор
+Есть статьи, которые нельзя отнести к какой-то одной теме
+
+6 Lessons Learned at Booking.com
