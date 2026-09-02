@@ -3,17 +3,20 @@
 
 <head>
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ page.title }} · Postmortem </title>
+  <!-- Описание страницы для поисковиков (берется из description в .md) -->
+  {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+  {% endif %}
+
+  <title>{{ page.title }} · Postmortem</title>
 
   <link rel="icon" type="image/png" href="{{ '/assets/favicon1.png' | relative_url }}">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
@@ -52,11 +55,12 @@
   <header class="site-header">
     <div class="header-inner">
 
+      <!-- Заголовок в шапке сайта -->
       <a
         class="site-title"
         href="{{ '/' | relative_url }}"
       >
-        ML Notes
+        Postmortem
       </a>
 
     </div>
