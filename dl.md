@@ -14,6 +14,8 @@ Full batch, stochastic, Mini-Batch
 
 Как будет вести себя логистическая регресия (2.03)
 
+Linear Separable problem
+
 # История нейросетей
 
 ## Почему видеокарта - видео?
