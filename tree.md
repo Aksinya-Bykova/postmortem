@@ -3028,3 +3028,13 @@ $$
 > As we argue here, this means that they also suffer from the limitation discussed for other non-parametric learning algorithms in the previous sections: they need at least as many training examples as there are variations of interest in the target function, and they cannot generalize to new variations not covered in the training set
 
 В статье уже критиковались другие модели и они все обладают одной и той же проблемой.
+
+> As illustrated in Figure 5, a decision tree recursively partitions the input space and assigns an output value for each of the input regions in that partition.
+
+Как показано на рисунке в статье, дерево решений рекурсивно разбивает входное пространство и присваивает выходное значение каждой из получившихся областей этого разбиения. Это те самые прямоугольные области.
+
+> Learning algorithms for decision trees (Breiman, Friedman, Olshen, & Stone, 1984) are non-parametric and involve a non-convex optimization to choose a tree structure and parameters associated with nodes and leaves.
+
+**Non-parametric:** В линейной регрессии фиксированное число параметров ($y = w_1 x_1 + w_2 x_2 + b$). В дереве число параметров заранее неизвестно: чем больше данных, тем глубже может вырасти дерево и тем больше листьев-параметров у него появится.
+
+**Non-convex optimization:** Найти математически *идеальное* дерево (которое глобально лучше всех решает задачу) — это дискретная NP-полная задача (комбинаторный тупик). Нельзя просто посчитать производную и плавно скатиться в минимум, как в нейросетях. Вариантов структур слишком много.
