@@ -17,3 +17,8 @@ title: Deep Learning
 Пример из атеншена
 
 # Переобучение
+дропаут
+
+# Gradient Descent
+
+Full batch, stochastic, Mini-Batch
