@@ -36,4 +36,21 @@ Representation learning
 # Переобучение
 дропаут
 
+батчнорм
 
+# Материалы на разбор
+Learning Deep Architectures for AI, Yoshua Bengio (2009)
+
+Patterns, Predictions, and Actions: A story about machine learning, Moritz Hardt, Benjamin Recht (2022)
+
+Reinforcement Learning: An Introduction, Richard S. Sutton, Andrew G. Barto
+
+Deep Learning: Foundations and Concepts, Christopher M. Bishop, Hugh Bishop (Springer, 2023)
+
+IFT 6135 — Representation Learning, https://github.com/fwilhelmy/ift6135-representationlearning-coursenotes/blob/main/main.pdf
+
+https://chandar-lab.github.io/INF8245E/
+
+DLRL Summer School
+
+Hugo Larochelle
