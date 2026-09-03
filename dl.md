@@ -12,13 +12,19 @@ title: Deep Learning
 # Gradient Descent
 Full batch, stochastic, Mini-Batch
 
+# Поведение логрега
 Как будет вести себя логистическая регресия (2.03)
 
-Linear Separable problem
+Linear Separable problem, generalized linear models - все круто, но не всегда данные линейно разделимы
+
+The infamous xor problem (minsky 1969): логистическая регрессия не может ее решить
 
 # История нейросетей
+Перцептрон, Лекун и все такое
 
 ## Почему видеокарта - видео?
+Слезливая история про алекснет и куду
+
 
 # Устройство нейросети
 
