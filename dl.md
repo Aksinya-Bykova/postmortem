@@ -19,6 +19,8 @@ Linear Separable problem, generalized linear models - все круто, но н
 
 The infamous xor problem (minsky 1969): логистическая регрессия не может ее решить
 
+Representation learning
+
 # История нейросетей
 Перцептрон, Лекун и все такое
 
