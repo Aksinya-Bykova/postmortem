@@ -33,10 +33,10 @@ Representation learning
 # Затухание/взрыв градиента
 Функция активации. Пример из атеншена
 
+батчнорм
+
 # Переобучение
 дропаут
-
-батчнорм
 
 # Материалы на разбор
 Learning Deep Architectures for AI, Yoshua Bengio (2009)
