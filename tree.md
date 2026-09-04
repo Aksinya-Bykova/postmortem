@@ -3038,3 +3038,52 @@ $$
 **Non-parametric:** В линейной регрессии фиксированное число параметров ($y = w_1 x_1 + w_2 x_2 + b$). В дереве число параметров заранее неизвестно: чем больше данных, тем глубже может вырасти дерево и тем больше листьев-параметров у него появится.
 
 **Non-convex optimization:** Найти математически *идеальное* дерево (которое глобально лучше всех решает задачу) — это дискретная NP-полная задача (комбинаторный тупик). Нельзя просто посчитать производную и плавно скатиться в минимум, как в нейросетях. Вариантов структур слишком много.
+
+> Fortunately, greedy heuristics that build the tree incrementally have been found to work well.
+
+К счастью, жадные эвристики, которые строят дерево пошагово (инкрементально), как оказалось, работают хорошо.
+
+> Each node of the tree corresponds to a region of the input space, and the root is associated with the whole input space. We call constant-leaves decision tree (the common type) one where the whole tree corresponds to a piece-wise constant function where the pieces are defined by the internal decision nodes: each leaf is associated with one piece, along with a constant to output in the associated region. The decision nodes on the path from the root to a leaf define one of the mutually exclusive regions formed by the decision tree
+
+Каждый узел дерева соответствует определенной области входного пространства, а корень сопоставлен со всем входным пространством целиком. Мы называем деревом решений с константами в листьях (наиболее распространенный тип) такое, в котором всё дерево соответствует кусочно-постоянной функции, где отдельные кусочки определяются внутренними узлами решений: каждый лист сопоставлен с одним кусочком вместе с константой, выдаваемой в соответствующей области. Узлы решений на пути от корня к листу определяют одну из взаимно исключающих областей, сформированных деревом решений.
+
+В общем, всё как на классической картинке с прямоугольниками.
+
+> Like in a disjunctive normal form circuit or a Gaussian kernel machine, the outputs of decision nodes are multiplied and form a conjunction: an example has to satisfy all the conditions to belong to a leaf region.
+
+Как в схеме дизъюнктивной нормальной формы (ДНФ) или в машине с гауссовым ядром, выходы узлов решений перемножаются и образуют конъюнкцию: объект должен удовлетворять всем условиям, чтобы принадлежать области листа.
+
+Вот тут начинается интересное!
+
+**Перемножение условий:** В математической логике логическое «И» (конъюнкция) — это буквально операция **умножения индикаторов**:
+
+$$\mathbb{I}(x \in R) = \mathbb{I}(\text{условие}_1) \times \mathbb{I}(\text{условие}_2) \times \dots \times \mathbb{I}(\text{условие}_k)$$
+Если хоть одно условие нарушилось ($0$), всё произведение мгновенно обнуляется. Объект вылетает из листа.
+
+**ДНФ (Дизъюнктивная нормальная форма):**  
+
+Это логическая формула вида:  
+$$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\text{Условие}_3 \land \text{Условие}_4) \ \mathbf{\lor} \ \dots$$
+То есть: **ИЛИ** (попадаем в Лист 1) **ИЛИ** (попадаем в Лист 2) **ИЛИ** (попадаем в Лист 3)... А внутри каждого листа сидит жесткое **«И»**.
+
+> The decision nodes form the first level of the architecture. The predictions associated with the leaves, along with their parameters, form the second level of the architecture.
+
+Узлы решений образуют первый уровень архитектуры. Предсказания, связанные с листьями, вместе с их параметрами, образуют второй уровень архитектуры. То есть дерево буквально можно сравнить с нейросетью.
+
+> Bengio et al. (2007) study fundamental limitations of decision trees concerning their inability to generalize to variations not seen in the training set
+
+Бенджио и соавторы (2007) исследуют фундаментальные ограничения деревьев решений, связанные с их неспособностью обобщать на вариации, не виденные в обучающей выборке.
+
+> The basic argument is that a decision tree needs a separate leaf node to properly model each such variation, and at least one training example for each leaf node.
+
+Базовый аргумент заключается в том, что дереву решений требуется отдельный лист для корректного моделирования каждой такой вариации, и как минимум один обучающий пример для каждого листа. 
+
+Это по сути принцип Дирихле: $$\text{Число вариаций} \le \text{Число листьев} \le \text{Число обучающих точек}$$
+
+*Число вариаций целевой функции $h(x)$ — это минимальное количество кусочков-констант, на которые нужно разрезать пространство, чтобы приблизить функцию с заданной точностью $\epsilon$.*
+
+> That theoretical analysis is built along lines similar to ideas exploited previously in the computational complexity literature (Cucker & Grigoriev, 1999). These results are also in line with previous empirical results (Pérez & Rendell, 1996; Vilalta, Blix, & Rendell, 1997) showing that the generalization performance of decision trees degrades when the number of variations in the target function increases. The following results are taken from Bengio et al. (2007).
+
+Этот теоретический анализ построен в русле идей, ранее использовавшихся в литературе по вычислительной сложности (Кукер и Григорьев, 1999). Эти результаты также согласуются с более ранними эмпирическими результатами (Перес и Ренделл, 1996; Вилальта, Бликс и Ренделл, 1997), показавшими, что обобщающая способность деревьев решений деградирует при увеличении числа вариаций в целевой функции. Следующие результаты взяты из работы Bengio et al. (2007).
+
+
