@@ -3140,5 +3140,28 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 А если мы хотим быть **хоть чуть-чуть умнее монетки** (например, ошибаться не в 50% случаев, а в 49%, то есть $\epsilon = 0.49$)?  Подставляем: $1 - 2(0.49) = 0.02$. Нам нужно: $0.02 \times \mathbf{2^d}$ примеров. Это всё равно экспонента. Даже чтобы получить микроскопическое преимущество над случайным угадыванием, дереву всё равно нужно невозможно огромное количество данных.
 
+> Ensembles of trees (like boosted trees (Freund & Schapire, 1996), and forests (Ho, 1995; Breiman, 2001)) are more powerful than a single tree. As illustrated in Figure 6, they implicitly form a distributed representation (a notion discussed further in Section 4) with the output of all the trees in the forest.
+
+В одиночном дереве объект получает одно дискретное имя (например, kист №5). В ансамбле каждое дерево выдает свой ответ, и объект начинает описываться вектором ответов всех деревьев разом. То есть представление объекта распределено по множеству независимых детекторов (здесь — деревьев из леса). 
+
+> Each tree in an ensemble can be associated with a discrete symbol identifying the leaf/region in which the input example falls for that tree. The description of an input pattern with the identities of the leaf nodes for the trees is very rich: it can represent a very large number of possible patterns, because the number of intersections of the leaf regions associated with the $n$ trees can be exponential in $n$.
+>
+> Since a depth $k - 1$ architecture might be very inefficient to represent a depth $k$ function, it might be interesting to explore learning algorithms based upon decision trees in which the architecture depth is even greater than in ensembles of trees.
+
 ---
 Невероятно, что человек ещё в то время понял, почему деревья тупиковый путь. Это статья 2009 года, а AlexNet вышел в 2012! На данный момент в гугл сколаре 13665 цитирований.
+
+## Сходство деревьев и нейросети
+
+В нейросети каждый отдельный скрытый нейрон выделяет признак (горизонтальная полоска, округлый контур, если на классическом примере про цифры). Деревья в лесах и бустингах делают по сути то же самое, что и первый скрытый слой в нейрости. По этому поводу есть статья [Practical Lessons from Predicting Clicks on Ads at Facebook, 2014](https://research.facebook.com/publications/practical-lessons-from-predicting-clicks-on-ads-at-facebook/). В Фейсбуке сделали какой-то меджик:
+
+1. Берётся обученный бустинг (например, 100 деревьев). Один на весь фейсбук
+2. Прогоняем объекты. Для каждого объекта смотрим, в какой номер листа он попал в каждом дереве
+3. Делается one-hot кодирование номера листа. Если у дерева 8 листьев и объект оказался в листе номер 3, то получается вектор $\[0, 0, 1, 0, 0, 0, 0, 0\]$
+4. Все векторы с каждого дерева склеиваются вместе в один вектор
+5. Этот вектор попадает в логистическую регрессиию
+6. На выходе получается вероятность чего-то (например, это могла быть задача оценки CTR)
+
+Объект — это конструкция (юзер, объявление, контекст), где содержится вообще всё: пол, возраст, город, категория товара, день недели, покупал ли этот человек этот бренд раньше и т д. Один юзер создаёт в день сотни таких объектов. 
+
+
