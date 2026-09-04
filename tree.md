@@ -3013,7 +3013,7 @@ $$
 
 ---
 
-Изначально я нашла статью [Learning Deep Architectures for AI, Yoshua Bengio](https://www.cs.princeton.edu/courses/archive/spring13/cos598C/Learning%20Deep%20Architectures%20for%20AI.pdf), где разбираются слабые стороны деревьев. Что пишет Бенджио? Перевод.
+Изначально я нашла статью [Learning Deep Architectures for AI, Yoshua Bengio](https://www.cs.princeton.edu/courses/archive/spring13/cos598C/Learning%20Deep%20Architectures%20for%20AI.pdf), где разбираются слабые стороны деревьев. Что пишет Бенджио?
 
 > Decision trees are among the best studied learning algorithms. Because they can focus on specific subsets of input variables, at first blush they seem non-local.
 
