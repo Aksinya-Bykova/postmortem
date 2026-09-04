@@ -3025,6 +3025,8 @@ $$
 
 В статье уже критиковались другие модели и они все обладают одной и той же проблемой.
 
+TODO картинка
+
 > As illustrated in Figure 5, a decision tree recursively partitions the input space and assigns an output value for each of the input regions in that partition.
 
 Как показано на рисунке в статье, дерево решений рекурсивно разбивает входное пространство и присваивает выходное значение каждой из получившихся областей этого разбиения. Это те самые прямоугольные области.
@@ -3092,3 +3094,28 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
    (Мы измерили сложность функции $h$: чтобы накрыть все её холмы и впадины с допуском $\epsilon$, нам неизбежно нужно минимум $N$ горизонтальных полочек).
 4. *Тогда для обучения дерева решений с константами в листьях с ошибкой менее $\epsilon$ требуется **как минимум $N$ обучающих примеров**.*
 
+Идея доказательства: принцип Дирихле. У дерева $N$ листьев. Если данных в обучающей выборке меньше, чем $N$, то чисто физически хотя бы один лист останется пустым (без единой точки). А в пустом листе жадный алгоритм не может угадать правильную константу с ошибкой меньше $\epsilon$.
+
+> The above proposition states that the number of examples needed grows linearly with the number of regions needed to achieve a desired error level. The theorem below states a more specific result in the case of a family of function for which the number of needed regions is exponential in the input size.
+
+Тут нам объясняют стратегию. В утверждении сверху получили $N_{\text{examples}} \ge N_{\text{regions}}$, а в теореме ниже будет показан такой edge case, когда $N_{\text{regions}}$ экспоненциально растёт. Откуда получаем оценку на $N_{\text{examples}}$.
+
+TODO картинка
+
+> Whereas a single tree can discriminate among a number of regions linear in the number of parameters (leaves), an ensemble of trees can discriminate among a number of regions exponential in the number of trees, i.e. exponential in the total number of parameters (at least as long as the number of trees is less or equal to the number of inputs).
+
+**Одиночное дерево:** 100 листьев = ровно 100 областей. Рост $O(K)$.
+
+**Ансамбль:** 100 простых деревьев могут разрезать пространство на гигантское число пересечений! Рост $O(2^n)$.
+
+**less or equal to the number of inputs:** В геометрии есть теорема о разбиении пространства гиперплоскостями. В пространстве размерности $d$ первые $n$ гиперплоскостей (пока $n \le d$) могут пересечься так, что дадут ровно $2^n$ секторов. (Если прямых станет больше, чем размерность, рост станет чуть медленнее, но всё равно комбинаторно огромным).
+
+> Each distinguishable region is associated with one of the leaves of each tree (here there are 3 trees, each defining 2 regions, for a total of 7 regions).
+
+На картинке 3 дерева, каждое задаёт по 2 области, что в сумме даёт 7 областей.
+
+> This is equivalent to a multi-clustering, here 3 clusterings each associated with 2 regions. A binomial RBM is a multi-clustering with 2 linearly separated regions per partition (each associated with one hidden unit). A multi-clustering is therefore a distributed representation of the input pattern.
+
+Честно говоря, пока не до конца осознала. Что-то эзотерическое про кластеризации и нейросети, надо изучать остальные работы Бенджио.
+
+Невероятно, что человек ещё в то время понял, почему деревья тупиковый путь.
