@@ -3025,7 +3025,11 @@ $$
 
 В статье уже критиковались другие модели и они все обладают одной и той же проблемой.
 
-TODO картинка
+<figure>
+  <img
+    src="{{ '/assets/assets/Screenshot from 2026-09-04 04-25-54.png' | relative_url }}"
+  >
+</figure>
 
 > As illustrated in Figure 5, a decision tree recursively partitions the input space and assigns an output value for each of the input regions in that partition.
 
@@ -3100,7 +3104,11 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 Тут нам объясняют стратегию. В утверждении сверху получили $N_{\text{examples}} \ge N_{\text{regions}}$, а в теореме ниже будет показан такой edge case, когда $N_{\text{regions}}$ экспоненциально растёт. Откуда получаем оценку на $N_{\text{examples}}$.
 
-TODO картинка
+<figure>
+  <img
+    src="{{ '/assets/assets/Screenshot from 2026-09-04 04-26-06.png' | relative_url }}"
+  >
+</figure>
 
 > Whereas a single tree can discriminate among a number of regions linear in the number of parameters (leaves), an ensemble of trees can discriminate among a number of regions exponential in the number of trees, i.e. exponential in the total number of parameters (at least as long as the number of trees is less or equal to the number of inputs).
 
