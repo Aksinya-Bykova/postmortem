@@ -3027,7 +3027,7 @@ $$
 
 <figure>
   <img
-    src="{{ '/assets/assets/Screenshot from 2026-09-04 04-25-54.png' | relative_url }}"
+    src="{{ '/assets/assets/figure5.png' | relative_url }}"
   >
 </figure>
 
@@ -3106,7 +3106,7 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 <figure>
   <img
-    src="{{ '/assets/assets/Screenshot from 2026-09-04 04-26-06.png' | relative_url }}"
+    src="{{ '/assets/assets/figure6.png' | relative_url }}"
   >
 </figure>
 
