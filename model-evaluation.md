@@ -1204,10 +1204,6 @@ Resource / compute budget
 
 # LLM as a judge (OpenAI)
 
-# Оценка агентов
-## Статьи на разбор
-[Demystifying evals for AI agents (Anthropic)](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) 
-
 # Temporal evaluation
 Классическая задача — по прошлому предсказывать будущее. Как это делать? Самый простой и достаточно популярный способ — time split. Однако, если задуматься, то это ведь очень сильный claim. Допустим, мы делим данные в отношении 8:1:1 (train, valid, test): по первым 80% предсказать следующие 20%. Где гарантия, что здесь нет утечки?
 
@@ -1253,3 +1249,5 @@ Resource / compute budget
 [**Predicting Good Probabilities with Supervised Learning**](https://dl.acm.org/doi/epdf/10.1145/1102351.1102430)
 
 Почему большинство ML-моделей врут, когда выдают числа от 0 до 1 под видом «вероятностей», и как это чинить (Platt Scaling vs Isotonic Regression)
+
+[Demystifying evals for AI agents (Anthropic)](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) 
