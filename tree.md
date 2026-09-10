@@ -3075,8 +3075,6 @@ $$
 
 Как в схеме дизъюнктивной нормальной формы (ДНФ) или в машине с гауссовым ядром, выходы узлов решений перемножаются и образуют конъюнкцию: объект должен удовлетворять всем условиям, чтобы принадлежать области листа.
 
-Вот тут начинается интересное!
-
 **Перемножение условий:** В математической логике логическое «И» (конъюнкция) — это буквально операция **умножения индикаторов**:
 
 $$\mathbb{I}(x \in R) = \mathbb{I}(\text{условие}_1) \times \mathbb{I}(\text{условие}_2) \times \dots \times \mathbb{I}(\text{условие}_k)$$
@@ -3087,6 +3085,8 @@ $$\mathbb{I}(x \in R) = \mathbb{I}(\text{условие}_1) \times \mathbb{I}(\t
 Это логическая формула вида:  
 $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\text{Условие}_3 \land \text{Условие}_4) \ \mathbf{\lor} \ \dots$$
 То есть: **ИЛИ** (попадаем в Лист 1) **ИЛИ** (попадаем в Лист 2) **ИЛИ** (попадаем в Лист 3)... А внутри каждого листа сидит жесткое **«И»**.
+
+Любую функцию можно разложить через ДНФ, но это не благо. Из общей теории computer science с ней куча проблем (в курсах рассказывают по SAT солверы, карты Карно etc.) Утверждается, что бинарное дерево и есть ДНФ, то есть нас, вероятно, настигнут те же самые трудности. Про не бинарные деревья тут как-то опускается, видимо, асимптотическая сложность будет не меньше.
 
 > The decision nodes form the first level of the architecture. The predictions associated with the leaves, along with their parameters, form the second level of the architecture.
 
@@ -3135,7 +3135,7 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 **Ансамбль:** 100 простых деревьев могут разрезать пространство на гигантское число пересечений! Рост $O(2^n)$.
 
-**less or equal to the number of inputs:** В геометрии есть теорема о разбиении пространства гиперплоскостями. В пространстве размерности $d$ первые $n$ гиперплоскостей (пока $n \le d$) могут пересечься так, что дадут ровно $2^n$ секторов. (Если прямых станет больше, чем размерность, рост станет чуть медленнее, но всё равно комбинаторно огромным).
+**less or equal to the number of inputs:** В геометрии есть теорема о разбиении пространства гиперплоскостями. В пространстве размерности $d$ первые $n$ гиперплоскостей (пока $n \le d$) могут пересечься так, что дадут ровно $2^n$ секторов. 
 
 > Each distinguishable region is associated with one of the leaves of each tree (here there are 3 trees, each defining 2 regions, for a total of 7 regions).
 
@@ -3164,7 +3164,9 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 В одиночном дереве объект получает одно дискретное имя (например, kист №5). В ансамбле каждое дерево выдает свой ответ, и объект начинает описываться вектором ответов всех деревьев разом. То есть представление объекта распределено по множеству независимых детекторов (здесь — деревьев из леса). 
 
 > Each tree in an ensemble can be associated with a discrete symbol identifying the leaf/region in which the input example falls for that tree. The description of an input pattern with the identities of the leaf nodes for the trees is very rich: it can represent a very large number of possible patterns, because the number of intersections of the leaf regions associated with the $n$ trees can be exponential in $n$.
->
+
+У нас есть ансамбль деревьев. Для конкретного объекта получается "дискретный символ" из "номеров" листьев на каждое дерево. Допустим у нас 100 деревьев по 2 листа. Физически листьев 200, но комбинаций (пересечений в пространстве) — $2^{100}$. То есть объект лежит в (минимальном) пересечении таких регионов (многомерных прямоугольников), но уникальных объектов, которые могут попасть в это пересечение $2^{100}$. 
+
 > Since a depth $k - 1$ architecture might be very inefficient to represent a depth $k$ function, it might be interesting to explore learning algorithms based upon decision trees in which the architecture depth is even greater than in ensembles of trees.
 
 ---
