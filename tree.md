@@ -3024,7 +3024,7 @@ $$
 
 Изначально я нашла статью [Learning Deep Architectures for AI, Yoshua Bengio](https://www.cs.princeton.edu/courses/archive/spring13/cos598C/Learning%20Deep%20Architectures%20for%20AI.pdf), где разбираются слабые стороны деревьев.
 
-Это не просто статья, а целый разбор концепций машинного обучения. Мне кажется, её надо перечитать раз 10 в разные периоды жизни. Раньше никогда не думала о моделях через ДНФ.
+Это не просто статья, а целый разбор концепций машинного обучения. Раньше никогда не думала о моделях через ДНФ.
 
 <details markdown="1">
   <summary>Разбор статьи</summary>
@@ -3088,9 +3088,11 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 Любую функцию можно разложить через ДНФ, но это не благо. Из общей теории computer science с ней куча проблем (в курсах рассказывают по SAT солверы, карты Карно etc.) Утверждается, что бинарное дерево и есть ДНФ, то есть нас, вероятно, настигнут те же самые трудности. Про не бинарные деревья тут как-то опускается, видимо, асимптотическая сложность будет не меньше.
 
+В гауссовых ядрах не разбираюсь, поэтому не берусь делать разбор.
+
 > The decision nodes form the first level of the architecture. The predictions associated with the leaves, along with their parameters, form the second level of the architecture.
 
-Узлы решений образуют первый уровень архитектуры. Предсказания, связанные с листьями, вместе с их параметрами, образуют второй уровень архитектуры. То есть дерево буквально можно сравнить с нейросетью.
+Узлы решений образуют первый уровень архитектуры. Предсказания, связанные с листьями, вместе с их параметрами, образуют второй уровень архитектуры. (То есть дерево буквально можно сравнить с нейросетью.)
 
 > Bengio et al. (2007) study fundamental limitations of decision trees concerning their inability to generalize to variations not seen in the training set
 
@@ -3143,7 +3145,7 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 > This is equivalent to a multi-clustering, here 3 clusterings each associated with 2 regions. A binomial RBM is a multi-clustering with 2 linearly separated regions per partition (each associated with one hidden unit). A multi-clustering is therefore a distributed representation of the input pattern.
 
-Честно говоря, пока не до конца осознала. Что-то эзотерическое про кластеризации и нейросети, надо изучать остальные работы Бенджио.
+Честно говоря, пока не до конца осознала. Что-то эзотерическое про кластеризации. Не берусь разбирать.
 
 > Theorem 3.4. On the task of learning the $d$-bit parity function, a constant-leaves decision tree with axis-aligned decision nodes will require at least $2^d(1 - 2\epsilon)$ examples in order to achieve a generalization error less than or equal to $\epsilon$.
 
@@ -3165,7 +3167,7 @@ $$(\text{Условие}_1 \land \text{Условие}_2) \ \mathbf{\lor} \ (\te
 
 > Each tree in an ensemble can be associated with a discrete symbol identifying the leaf/region in which the input example falls for that tree. The description of an input pattern with the identities of the leaf nodes for the trees is very rich: it can represent a very large number of possible patterns, because the number of intersections of the leaf regions associated with the $n$ trees can be exponential in $n$.
 
-У нас есть ансамбль деревьев. Для конкретного объекта получается "дискретный символ" из "номеров" листьев на каждое дерево. Допустим у нас 100 деревьев по 2 листа. Физически листьев 200, но комбинаций (пересечений в пространстве) — $2^{100}$. То есть объект лежит в (минимальном) пересечении таких регионов (многомерных прямоугольников), но уникальных объектов, которые могут попасть в это пересечение $2^{100}$. 
+У нас есть ансамбль деревьев. Для конкретного объекта получается "дискретный символ" из "номеров" листьев на каждое дерево. Допустим у нас 100 деревьев по 2 листа. Физически листьев 200, но комбинаций (пересечений в пространстве) — $2^{100}$. То есть объект лежит в (минимальном) пересечении таких регионов (многомерных прямоугольников), но комбинаций таких пересечений $2^{100}$. 
 
 > Since a depth $k - 1$ architecture might be very inefficient to represent a depth $k$ function, it might be interesting to explore learning algorithms based upon decision trees in which the architecture depth is even greater than in ensembles of trees.
 
