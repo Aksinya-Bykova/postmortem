@@ -3024,7 +3024,7 @@ $$
 
 Изначально я нашла статью [Learning Deep Architectures for AI, Yoshua Bengio](https://www.cs.princeton.edu/courses/archive/spring13/cos598C/Learning%20Deep%20Architectures%20for%20AI.pdf), где разбираются слабые стороны деревьев.
 
-Честно говоря, здесь сложно полностью разобраться.
+Это не просто статья, а целый разбор концепций машинного обучения. Мне кажется, её надо перечитать раз 10 в разные периоды жизни.
 
 <details markdown="1">
   <summary>Разбор статьи</summary>
