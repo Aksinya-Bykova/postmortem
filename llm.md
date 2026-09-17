@@ -232,7 +232,7 @@ $$\text{Masked Attention} = \underbrace{A}_{(T \times T)} \cdot \underbrace{V}_{
 
 ## Add & Norm (Residual Connections + Нормализация)
 
-Каждый базовый блок трансформера (Attention и Feed-Forward) оборачивается в механизм **остаточных связей (Residual / Skip-connections)** и **нормализацию слоев (Layer Normalization)**.
+Между Attention и Feed-Forward стоит этап **остаточных связей (Residual / Skip-connections)** и **нормализацию слоев (Layer Normalization)**.
 
 ---
 
@@ -250,7 +250,7 @@ $$X_{out} = X + F(X)$$
 
 ---
 
-### Post-LN против Pre-LN (Современный стандарт)
+**Post-LN против Pre-LN (Современный стандарт)**
 
 В оригинальной статье *«Attention Is All You Need»* (2017) использовался подход **Post-LN**:
 $$X_{next} = \text{Norm}(X + \text{Sublayer}(X))$$
@@ -275,15 +275,14 @@ $$X_{out} = X_{attn} + \text{FFN}(\text{Norm}_2(X_{attn})) \in \mathbb{R}^{T \ti
 
 ---
 
-### Классическая архитектура FFN
-
 Классический FFN состоит из двух линейных слоёв с нелинейной функцией активации между ними:
 
 $$\text{FFN}(X) = \text{Activation}(\underbrace{X}_{(T \times d)} \cdot \underbrace{W_1}_{(d \times d_{ff})} + b_1) \cdot \underbrace{W_2}_{(d_{ff} \times d)} + b_2 \in \mathbb{R}^{T \times d}$$
 
 *Параметры смещения ($b_1, b_2$) в современных LLM часто выбрасывают ($b = 0$), так как они почти не влияют на качество, но усложняют квантование и параллелизацию.*
 
-#### Расширение и сжатие размерностей:
+**Расширение и сжатие размерностей:**
+
 1. **Первый слой ($W_1$):** проецирует вектор из размерности $d$ в расширенное пространство $d_{ff}$ (обычно **расширение в 4 раза**: $d_{ff} = 4d$).
    * Например, при $d = 4096$: $d_{ff} = 4 \cdot 4096 = 16\,384$.
 2. **Активация:** поэлементно применяется к матрице $(T \times 16\,384)$.
@@ -293,7 +292,7 @@ $$\text{FFN}(X) = \text{Activation}(\underbrace{X}_{(T \times d)} \cdot \underbr
 
 ---
 
-### Функции активации: почему не ReLU?
+**Функции активации: почему не ReLU?**
 
 В классических сетях использовали $\text{ReLU}(z) = \max(0, z)$.
 
@@ -302,12 +301,14 @@ $$\text{FFN}(X) = \text{Activation}(\underbrace{X}_{(T \times d)} \cdot \underbr
 
 Поэтому используют гладкие функции активации:
 
-#### GELU (Gaussian Error Linear Unit)
+**GELU (Gaussian Error Linear Unit)**
+
 Использовался в GPT-2, GPT-3, BERT:
 $$\text{GELU}(z) = z \cdot \Phi(z) = z \cdot P(Z \le z), \quad Z \sim \mathcal{N}(0, 1)$$
 Гладкая аппроксимация ReLU, которая не обнуляет жестко отрицательные значения, а оставляет маленький ненулевой градиент.
 
-#### SwiGLU (Современный стандарт: LLaMA, PaLM, Mistral)
+**SwiGLU (Современный стандарт: LLaMA, PaLM, Mistral)**
+
 Основан на активации **SiLU** (Swish):
 $$\text{SiLU}(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}$$
 
