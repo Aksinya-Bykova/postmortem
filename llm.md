@@ -16,7 +16,11 @@ description: Заметки о Large Language Models
 
 Есть прикольная интерактивная визуализация всех этапов: [](https://www.llm-visualized.com/) 
 
-
+<figure>
+  <img
+    src="{{ '/assets/interactive_llm.png' | relative_url }}"
+  >
+</figure>
 
 ## Подготовка
 
