@@ -14,7 +14,7 @@ description: Заметки о Large Language Models
 4. **Softmax с температурой**
 5. **Сэмплинг следующего токена**
 
-Есть прикольная интерактивная визуализация всех этапов: [](https://www.llm-visualized.com/) 
+Есть прикольная интерактивная визуализация всех этапов: <https://www.llm-visualized.com/>
 
 <figure>
   <img
