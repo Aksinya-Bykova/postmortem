@@ -350,7 +350,7 @@ $$\text{SwiGLU}(X) = \left( \text{SiLU}(X \cdot W_{gate}) \odot (X \cdot W_{up})
 
 * $\odot$ — поэлементное умножение (Hadamard product).
 * В SwiGLU промежуточную размерность $d_{ff}$ обычно берут не $4d$, а $\approx \frac{8}{3}d$ (для LLaMA-7B: $\approx 11\,008$), чтобы сохранить общее число параметров таким же, как в классическом FFN с двумя матрицами.
-  </details>
+</details>
 
 ## Выходной слой (Linear Layer)
 
