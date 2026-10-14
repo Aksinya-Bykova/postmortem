@@ -831,7 +831,7 @@ fraction = 000...0001
 
 <figure>
   <img
-    src="{{ '/assets/loss_overfitting.png' | relative_url }}"
+    src="{{ '/assets/loss_overfitting-1.png' | relative_url }}"
     alt="Train и validation loss: момент разворота val"
   >
   <figcaption>
